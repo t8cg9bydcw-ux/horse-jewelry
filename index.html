@@ -1,53 +1,299 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Près de Toi — Индивидуальные украшения</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #fdf8f3;
-            color: #2c2c2c;
-            margin: 0;
-            padding: 20px;
-            text-align: center;
-        }
-        .container { max-width: 500px; margin: 0 auto; padding: 20px 0; }
-        h1 { font-size: 28px; color: #b8860b; margin-bottom: 5px; font-weight: 300; letter-spacing: 2px; }
-        .subtitle { font-size: 14px; color: #888; margin-bottom: 30px; letter-spacing: 1px; }
-        .card { background: #fff; border-radius: 16px; padding: 25px 20px; margin-bottom: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
-        .card h2 { font-size: 18px; margin-top: 0; color: #b8860b; font-weight: 500; }
-        .card p { font-size: 14px; line-height: 1.6; color: #555; }
-        .btn { display: inline-block; background: #b8860b; color: #fff; padding: 14px 32px; border-radius: 50px; text-decoration: none; font-size: 15px; margin-top: 10px; letter-spacing: 1px; }
-        .options { text-align: left; font-size: 14px; color: #555; line-height: 2; padding-left: 10px; }
-        .options span { color: #b8860b; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Près de Toi — соберите своё изделие</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #fdf8f3; color: #2c2c2c; padding: 16px; min-height: 100vh;
+  }
+  .container { max-width: 480px; margin: 0 auto; }
+  h1 { font-size: 24px; color: #b8860b; font-weight: 300; letter-spacing: 2px; text-align: center; margin-bottom: 4px; }
+  .subtitle { font-size: 13px; color: #999; text-align: center; margin-bottom: 24px; letter-spacing: 1px; }
+  .screen { display: none; }
+  .screen.active { display: block; }
+  .screen-title { font-size: 18px; color: #b8860b; text-align: center; margin-bottom: 20px; font-weight: 500; }
+  .btn {
+    display: block; width: 100%; padding: 16px; margin-bottom: 12px;
+    background: #fff; border: 2px solid #e8d5b0; border-radius: 14px;
+    font-size: 16px; color: #2c2c2c; cursor: pointer; text-align: center;
+    transition: all 0.2s;
+  }
+  .btn:hover { border-color: #b8860b; background: #fffaf0; }
+  .btn.primary { background: #b8860b; color: #fff; border-color: #b8860b; }
+  .btn.primary:hover { background: #a0750a; }
+  .btn.back { background: transparent; border: none; color: #999; font-size: 14px; margin-bottom: 8px; text-align: left; padding: 8px 0; }
+  .option-group { margin-bottom: 24px; }
+  .option-group label { display: block; font-size: 14px; color: #b8860b; margin-bottom: 8px; font-weight: 500; }
+  .option-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .option {
+    padding: 10px 14px; background: #fff; border: 2px solid #e8d5b0;
+    border-radius: 10px; font-size: 14px; cursor: pointer; transition: all 0.2s;
+  }
+  .option.selected { border-color: #b8860b; background: #fffaf0; }
+  .color-swatch { width: 36px; height: 36px; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 0 0 2px #e8d5b0; cursor: pointer; }
+  .color-swatch.selected { box-shadow: 0 0 0 3px #b8860b; }
+  .hint { font-size: 12px; color: #999; margin-top: 6px; line-height: 1.5; }
+  input[type="text"] {
+    width: 100%; padding: 12px; border: 2px solid #e8d5b0; border-radius: 10px;
+    font-size: 14px; font-family: inherit;
+  }
+  .photo-slot {
+    width: 100%; padding: 30px; border: 2px dashed #e8d5b0; border-radius: 14px;
+    text-align: center; color: #b8860b; font-size: 14px; background: #fffaf0;
+  }
+  .note { font-size: 12px; color: #999; text-align: center; margin-top: 20px; line-height: 1.5; }
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>Près de Toi</h1>
-        <p class="subtitle">рядом с тобой</p>
-        <div class="card">
-            <h2>Частичка вашей лошади — всегда с вами</h2>
-            <p>Индивидуальные подвески, брелоки и украшения с портретом вашей лошади. Ручная работа, тёплый смысл, личный подход к каждому заказу.</p>
-        </div>
-        <div class="card">
-            <h2>Что можно выбрать</h2>
-            <div class="options">
-                <span>✦</span> Форма: круглая, квадратная, овальная<br>
-                <span>✦</span> Размер: маленький, средний, большой<br>
-                <span>✦</span> Дополнения: бусины, звёздочки, сердечко<br>
-                <span>✦</span> Гравировка: имя или дата<br>
-                <span>✦</span> Упаковка: подарочная коробочка
-            </div>
-        </div>
-        <div class="card">
-            <h2>Как заказать</h2>
-            <p>Напишите мне в личные сообщения: пришлите фото вашей лошади и расскажите, что хотите. Я помогу выбрать и создам для вас частичку вашей лошади.</p>
-            <a href="https://t.me/@batonesk" class="btn">Написать мне</a>
-        </div>
-        <p style="font-size: 12px; color: #aaa; margin-top: 30px;">Près de Toi · ручная работа · 2026</p>
+<div class="container">
+  <h1>Près de Toi</h1>
+  <p class="subtitle">рядом с тобой</p>
+
+  <!-- ЭКРАН 1 -->
+  <div id="screen1" class="screen active">
+    <p class="screen-title">Выберите тип вашего изделия</p>
+    <button class="btn" onclick="goTo(2, {type: 'Брелок'})">Брелок</button>
+    <button class="btn" onclick="goTo(2, {type: 'Подвеска'})">Подвеска</button>
+  </div>
+
+  <!-- ЭКРАН 2 -->
+  <div id="screen2" class="screen">
+    <button class="btn back" onclick="goTo(1)">← Назад</button>
+    <p class="screen-title">Выберите формат изделия</p>
+    <button class="btn" onclick="goTo(3, {format: 'Объёмная морда'})">Объёмное изображение морды вашей лошади</button>
+    <button class="btn" onclick="goTo(3, {format: 'Фотка в смоле'})">Фотка в прозрачной оболочке</button>
+  </div>
+
+  <!-- ЭКРАН 3 -->
+  <div id="screen3" class="screen">
+    <button class="btn back" onclick="goTo(2)">← Назад</button>
+    <p class="screen-title">Выберите способ сборки</p>
+    <button class="btn" onclick="goToConstructor()">Собрать самому</button>
+    <button class="btn" onclick="goToMaster()">Сборка мастера</button>
+  </div>
+
+  <!-- ЭКРАН 4: Конструктор -->
+  <div id="screen4" class="screen">
+    <button class="btn back" onclick="goTo(3)">← Назад</button>
+    <p class="screen-title">Соберите своё изделие</p>
+    <div id="constructorContent"></div>
+    <button class="btn primary" onclick="sendOrder()">Отправить заявку</button>
+  </div>
+
+  <!-- ЭКРАН 5: Мастер -->
+  <div id="screen5" class="screen">
+    <button class="btn back" onclick="goTo(3)">← Назад</button>
+    <p class="screen-title">Сборка мастера</p>
+    <div class="option-group">
+      <label>1. Фото лошади</label>
+      <div class="photo-slot">Пришлите фото в чат после заявки</div>
     </div>
+    <div id="masterForm"></div>
+    <button class="btn primary" onclick="sendMasterOrder()">Отправить заявку</button>
+  </div>
+
+  <p class="note">Près de Toi · ручная работа · заявка откроется в чате с мастером</p>
+</div>
+
+<script>
+let order = { type: '', format: '', build: '' };
+let choices = {};
+
+function goTo(n, data) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen' + n).classList.add('active');
+  if (data) Object.assign(order, data);
+  window.scrollTo(0, 0);
+}
+
+function goToConstructor() {
+  order.build = 'Собрать самому';
+  buildConstructor();
+  goTo(4);
+}
+
+function goToMaster() {
+  order.build = 'Сборка мастера';
+  buildMasterForm();
+  goTo(5);
+}
+
+function selectOption(el, key, value) {
+  const parent = el.parentElement;
+  parent.querySelectorAll('.option, .color-swatch').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  choices[key] = value;
+}
+
+function buildConstructor() {
+  const c = document.getElementById('constructorContent');
+  let html = '';
+
+  if (order.format === 'Объёмная морда') {
+    html += `
+      <div class="option-group">
+        <label>Металл</label>
+        <div class="option-row">
+          <div class="option" onclick="selectOption(this,'metal','Золото')">Золото</div>
+          <div class="option" onclick="selectOption(this,'metal','Серебро')">Серебро</div>
+          <div class="option" onclick="selectOption(this,'metal','Розовое золото')">Розовое золото</div>
+        </div>
+      </div>
+      <div class="option-group">
+        <label>Гравировка</label>
+        <div class="option-row">
+          <div class="option" onclick="selectOption(this,'engraving','Имя')">Имя</div>
+          <div class="option" onclick="selectOption(this,'engraving','Дата')">Дата</div>
+          <div class="option" onclick="selectOption(this,'engraving','Имя и дата')">Имя и дата</div>
+        </div>
+      </div>
+      <div class="option-group">
+        <label>Фото лошади</label>
+        <div class="photo-slot">Пришлите фото в чат после заявки</div>
+      </div>
+    `;
+  } else {
+    html += `
+      <div class="option-group">
+        <label>Форма и размер</label>
+        <div class="option-row">
+          <div class="option" onclick="selectOption(this,'form','Круг 4,5 см')">Круг 4,5 см</div>
+          <div class="option" onclick="selectOption(this,'form','Круг 2,5 см')">Круг 2,5 см</div>
+          <div class="option" onclick="selectOption(this,'form','Квадрат 4×4 см')">Квадрат 4×4 см</div>
+          <div class="option" onclick="selectOption(this,'form','Квадрат 2,5×2,5 см')">Квадрат 2,5×2,5 см</div>
+          <div class="option" onclick="selectOption(this,'form','Прямоугольник 3,5×6,5 см')">Прямоугольник 3,5×6,5 см</div>
+          <div class="option" onclick="selectOption(this,'form','Прямоугольник 2×3 см')">Прямоугольник 2×3 см</div>
+          <div class="option" onclick="selectOption(this,'form','Овал 3,5×5,5 см')">Овал 3,5×5,5 см</div>
+          <div class="option" onclick="selectOption(this,'form','Овал 2×2,5 см')">Овал 2×2,5 см</div>
+          <div class="option" onclick="selectOption(this,'form','Скруглённый треугольник 4,5 см')">Скруглённый треугольник 4,5 см</div>
+          <div class="option" onclick="selectOption(this,'form','Герб 5×3,5 см')">Герб 5×3,5 см</div>
+        </div>
+      </div>
+      <div class="option-group">
+        <label>Цвет фона смолы</label>
+        <div class="option-row" style="align-items:center;">
+          <div class="color-swatch" style="background:#fff;" onclick="selectOption(this,'color','Прозрачный')" title="Прозрачный"></div>
+          <div class="color-swatch" style="background:#ffa94d;" onclick="selectOption(this,'color','Оранжевый')" title="Оранжевый"></div>
+          <div class="color-swatch" style="background:#69db7c;" onclick="selectOption(this,'color','Зелёный')" title="Зелёный"></div>
+          <div class="color-swatch" style="background:#74c0fc;" onclick="selectOption(this,'color','Голубой')" title="Голубой"></div>
+          <div class="color-swatch" style="background:#ff6b6b;" onclick="selectOption(this,'color','Красный')" title="Красный"></div>
+          <div class="color-swatch" style="background:#b197fc;" onclick="selectOption(this,'color','Фиолетовый')" title="Фиолетовый"></div>
+          <div class="color-swatch" style="background:#ffe066;" onclick="selectOption(this,'color','Жёлтый')" title="Жёлтый"></div>
+          <div class="color-swatch" style="background:#faa2c1;" onclick="selectOption(this,'color','Розовый')" title="Розовый"></div>
+          <div class="color-swatch" style="background:#4dabf7;" onclick="selectOption(this,'color','Синий')" title="Синий"></div>
+          <div class="color-swatch" style="background:#ffd8a8;" onclick="selectOption(this,'color','Персиковый')" title="Персиковый"></div>
+        </div>
+        <p class="hint">Если вы хотите, чтобы ваша фотка хорошо просматривалась, советуем выбрать прозрачный.</p>
+      </div>
+      <div class="option-group">
+        <label>Наполнение</label>
+        <div class="option-row">
+          <div class="option" onclick="selectOption(this,'filling','Сухоцветы')">Сухоцветы</div>
+          <div class="option" onclick="selectOption(this,'filling','Бусины')">Бусины</div>
+          <div class="option" onclick="selectOption(this,'filling','Без наполнения')">Без наполнения</div>
+        </div>
+      </div>
+      <div class="option-group">
+        <label>Надпись</label>
+        <div class="option-row">
+          <div class="option" onclick="selectOption(this,'text','Имя')">Имя</div>
+          <div class="option" onclick="selectOption(this,'text','Дата')">Дата</div>
+          <div class="option" onclick="selectOption(this,'text','Имя и дата')">Имя и дата</div>
+          <div class="option" onclick="selectOption(this,'text','Без надписи')">Без надписи</div>
+        </div>
+      </div>
+      <div class="option-group">
+        <label>Металл</label>
+        <div class="option-row">
+          <div class="option" onclick="selectOption(this,'metal','Золото')">Золото</div>
+          <div class="option" onclick="selectOption(this,'metal','Серебро')">Серебро</div>
+          <div class="option" onclick="selectOption(this,'metal','Розовое золото')">Розовое золото</div>
+        </div>
+      </div>
+      <div class="option-group">
+        <label>Предпочитаемый цвет (если нужен свой)</label>
+        <input type="text" id="customColor" placeholder="Напишите свой цвет">
+      </div>
+      <div class="option-group">
+        <label>Фото лошади</label>
+        <div class="photo-slot">Пришлите фото в чат после заявки</div>
+      </div>
+    `;
+  }
+  c.innerHTML = html;
+}
+
+function buildMasterForm() {
+  const m = document.getElementById('masterForm');
+  m.innerHTML = `
+    <div class="option-group">
+      <label>2. Форма и размер</label>
+      <div class="option-row">
+        <div class="option" onclick="selectOption(this,'form','Круг 4,5 см')">Круг 4,5 см</div>
+        <div class="option" onclick="selectOption(this,'form','Круг 2,5 см')">Круг 2,5 см</div>
+        <div class="option" onclick="selectOption(this,'form','Квадрат 4×4 см')">Квадрат 4×4 см</div>
+        <div class="option" onclick="selectOption(this,'form','Квадрат 2,5×2,5 см')">Квадрат 2,5×2,5 см</div>
+        <div class="option" onclick="selectOption(this,'form','Прямоугольник 3,5×6,5 см')">Прямоугольник 3,5×6,5 см</div>
+        <div class="option" onclick="selectOption(this,'form','Прямоугольник 2×3 см')">Прямоугольник 2×3 см</div>
+        <div class="option" onclick="selectOption(this,'form','Овал 3,5×5,5 см')">Овал 3,5×5,5 см</div>
+        <div class="option" onclick="selectOption(this,'form','Овал 2×2,5 см')">Овал 2×2,5 см</div>
+        <div class="option" onclick="selectOption(this,'form','Скруглённый треугольник 4,5 см')">Скруглённый треугольник 4,5 см</div>
+        <div class="option" onclick="selectOption(this,'form','Герб 5×3,5 см')">Герб 5×3,5 см</div>
+      </div>
+    </div>
+    <div class="option-group">
+      <label>3. Цвет (можно несколько)</label>
+      <input type="text" id="masterColor" placeholder="Напишите цвета через запятую">
+    </div>
+    <div class="option-group">
+      <label>4. Металл</label>
+      <div class="option-row">
+        <div class="option" onclick="selectOption(this,'metal','Золото')">Золото</div>
+        <div class="option" onclick="selectOption(this,'metal','Серебро')">Серебро</div>
+        <div class="option" onclick="selectOption(this,'metal','Розовое золото')">Розовое золото</div>
+      </div>
+    </div>
+  `;
+}
+
+function sendOrder() {
+  const customColor = document.getElementById('customColor')?.value || '';
+  let text = `Заявка Près de Toi%0A%0A`;
+  text += `Тип: ${order.type}%0A`;
+  text += `Формат: ${order.format}%0A`;
+  text += `Сборка: ${order.build}%0A%0A`;
+  for (let key in choices) {
+    if (choices[key]) text += `${translateKey(key)}: ${choices[key]}%0A`;
+  }
+  if (customColor) text += `Свой цвет: ${customColor}%0A`;
+  text += `%0AФото лошади пришлю в чат.`;
+  window.open(`https://t.me/batonesk?text=${text}`, '_blank');
+}
+
+function sendMasterOrder() {
+  const color = document.getElementById('masterColor')?.value || '';
+  let text = `Заявка Près de Toi (сборка мастера)%0A%0A`;
+  text += `Тип: ${order.type}%0A`;
+  text += `Формат: ${order.format}%0A%0A`;
+  for (let key in choices) {
+    if (choices[key]) text += `${translateKey(key)}: ${choices[key]}%0A`;
+  }
+  if (color) text += `Цвет: ${color}%0A`;
+  text += `%0AФото лошади пришлю в чат.`;
+  window.open(`https://t.me/batonesk?text=${text}`, '_blank');
+}
+
+function translateKey(key) {
+  const map = {
+    metal: 'Металл', engraving: 'Гравировка', form: 'Форма', color: 'Цвет фона',
+    filling: 'Наполнение', text: 'Надпись'
+  };
+  return map[key] || key;
+}
+</script>
 </body>
 </html>
