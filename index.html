@@ -52,30 +52,27 @@
   <h1>Près de Toi</h1>
   <p class="subtitle">рядом с тобой</p>
 
-  <!-- ЭКРАН 1 -->
   <div id="screen1" class="screen active">
     <p class="screen-title">Выберите тип изделия</p>
     <button class="btn" onclick="goTo(2, {type: 'Подвеска'})">
-      <img src="foto1.jpg" alt="Подвеска">Подвеска
+      <img src="foto1.png" alt="Подвеска">Подвеска
     </button>
     <button class="btn" onclick="goTo(2, {type: 'Брелок'})">
-      <img src="foto2.jpg" alt="Брелок">Брелок
+      <img src="foto2.png" alt="Брелок">Брелок
     </button>
   </div>
 
-  <!-- ЭКРАН 2 -->
   <div id="screen2" class="screen">
     <button class="btn back" onclick="goTo(1)">← Назад</button>
     <p class="screen-title">Выберите формат изделия</p>
     <button class="btn" onclick="goTo(3, {format: 'Вариант 1'})">
-      <img src="foto3.jpg" alt="Вариант 1">Вариант 1
+      <img src="foto3.png" alt="Вариант 1">Вариант 1
     </button>
     <button class="btn" onclick="goTo(3, {format: 'Вариант 2'})">
-      <img src="foto4.jpg" alt="Вариант 2">Вариант 2
+      <img src="foto4.png" alt="Вариант 2">Вариант 2
     </button>
   </div>
 
-  <!-- ЭКРАН 3 -->
   <div id="screen3" class="screen">
     <button class="btn back" onclick="goTo(2)">← Назад</button>
     <p class="screen-title" id="screen3Title">Сборка</p>
@@ -83,7 +80,6 @@
     <button class="btn primary" onclick="showCheck()">Перепроверить заказ</button>
   </div>
 
-  <!-- ЭКРАН 4 -->
   <div id="screen4" class="screen">
     <button class="btn back" onclick="goTo(3)">← Назад</button>
     <p class="screen-title">Перепроверьте заказ</p>
@@ -113,14 +109,12 @@ function selectOption(el, key, value) {
   choices[key] = value;
 }
 
-// ---------- ЭКРАН 3 ----------
 function buildStep3() {
   const c = document.getElementById('buildContent');
   const t = document.getElementById('screen3Title');
   let html = '';
-  choices = {}; // сброс выбора
+  choices = {};
 
-  // ПОДВЕСКА + ВАРИАНТ 1
   if (order.type === 'Подвеска' && order.format === 'Вариант 1') {
     t.textContent = 'Сборка подвески · Вариант 1';
     html = `
@@ -131,9 +125,9 @@ function buildStep3() {
       <div class="option-group">
         <label>2. Фурнитура (металл)</label>
         <div class="option-row">
-          <div class="option" onclick="selectOption(this,'metal','Имитация серебра')"><img src="foto9.jpg">Серебро</div>
-          <div class="option" onclick="selectOption(this,'metal','Имитация золота')"><img src="foto7.jpg">Золото</div>
-          <div class="option" onclick="selectOption(this,'metal','Имитация розового золота')"><img src="foto8.jpg">Розовое золото</div>
+          <div class="option" onclick="selectOption(this,'metal','Имитация серебра')"><img src="foto9.png">Серебро</div>
+          <div class="option" onclick="selectOption(this,'metal','Имитация золота')"><img src="foto7.png">Золото</div>
+          <div class="option" onclick="selectOption(this,'metal','Имитация розового золота')"><img src="foto8.png">Розовое золото</div>
         </div>
       </div>
       <div class="option-group">
@@ -143,7 +137,6 @@ function buildStep3() {
     `;
   }
 
-  // ПОДВЕСКА + ВАРИАНТ 2
   if (order.type === 'Подвеска' && order.format === 'Вариант 2') {
     t.textContent = 'Сборка подвески · Вариант 2';
     html = `
@@ -154,10 +147,10 @@ function buildStep3() {
       <div class="option-group">
         <label>2. Форма и размер</label>
         <div class="option-row">
-          <div class="option" onclick="selectOption(this,'form','Круг 2,5 см')"><img src="foto13.jpg">Круг 2,5 см</div>
-          <div class="option" onclick="selectOption(this,'form','Квадрат 2,5×2,5 см')"><img src="foto10.jpg">Квадрат 2,5×2,5</div>
-          <div class="option" onclick="selectOption(this,'form','Прямоугольник 2×3 см')"><img src="foto11.jpg">Прямоуг. 2×3</div>
-          <div class="option" onclick="selectOption(this,'form','Овал 2×2,5 см')"><img src="foto12.jpg">Овал 2×2,5</div>
+          <div class="option" onclick="selectOption(this,'form','Круг 2,5 см')"><img src="foto13.png">Круг 2,5 см</div>
+          <div class="option" onclick="selectOption(this,'form','Квадрат 2,5×2,5 см')"><img src="foto10.png">Квадрат 2,5×2,5</div>
+          <div class="option" onclick="selectOption(this,'form','Прямоугольник 2×3 см')"><img src="foto11.png">Прямоуг. 2×3</div>
+          <div class="option" onclick="selectOption(this,'form','Овал 2×2,5 см')"><img src="foto12.png">Овал 2×2,5</div>
         </div>
       </div>
       <div class="option-group">
@@ -175,9 +168,9 @@ function buildStep3() {
       <div class="option-group">
         <label>5. Фурнитура (металл)</label>
         <div class="option-row">
-          <div class="option" onclick="selectOption(this,'metal','Имитация серебра')"><img src="foto9.jpg">Серебро</div>
-          <div class="option" onclick="selectOption(this,'metal','Имитация золота')"><img src="foto7.jpg">Золото</div>
-          <div class="option" onclick="selectOption(this,'metal','Имитация розового золота')"><img src="foto8.jpg">Розовое золото</div>
+          <div class="option" onclick="selectOption(this,'metal','Имитация серебра')"><img src="foto9.png">Серебро</div>
+          <div class="option" onclick="selectOption(this,'metal','Имитация золота')"><img src="foto7.png">Золото</div>
+          <div class="option" onclick="selectOption(this,'metal','Имитация розового золота')"><img src="foto8.png">Розовое золото</div>
         </div>
       </div>
       <div class="option-group">
@@ -187,7 +180,6 @@ function buildStep3() {
     `;
   }
 
-  // БРЕЛОК + ВАРИАНТ 1
   if (order.type === 'Брелок' && order.format === 'Вариант 1') {
     t.textContent = 'Сборка брелока · Вариант 1';
     html = `
@@ -218,15 +210,14 @@ function buildStep3() {
     `;
   }
 
-  // БРЕЛОК + ВАРИАНТ 2
   if (order.type === 'Брелок' && order.format === 'Вариант 2') {
     t.textContent = 'Сборка брелока · Вариант 2';
     html = `
       <div class="option-group">
         <label>1. Вариант изделия</label>
         <div class="option-row">
-          <div class="option" onclick="selectOption(this,'variant','Вариант 1')"><img src="foto5.jpg">Вариант 1</div>
-          <div class="option" onclick="selectOption(this,'variant','Вариант 2')"><img src="foto6.jpg">Вариант 2</div>
+          <div class="option" onclick="selectOption(this,'variant','Вариант 1')"><img src="foto5.png">Вариант 1</div>
+          <div class="option" onclick="selectOption(this,'variant','Вариант 2')"><img src="foto6.png">Вариант 2</div>
         </div>
       </div>
       <div class="option-group">
@@ -236,16 +227,16 @@ function buildStep3() {
       <div class="option-group">
         <label>3. Форма и размер</label>
         <div class="option-row">
-          <div class="option" onclick="selectOption(this,'form','Круг 4,5 см')"><img src="foto13.jpg">Круг 4,5</div>
-          <div class="option" onclick="selectOption(this,'form','Круг 2,5 см')"><img src="foto13.jpg">Круг 2,5</div>
-          <div class="option" onclick="selectOption(this,'form','Квадрат 4×4 см')"><img src="foto10.jpg">Квадрат 4×4</div>
-          <div class="option" onclick="selectOption(this,'form','Квадрат 2,5×2,5 см')"><img src="foto10.jpg">Квадрат 2,5</div>
-          <div class="option" onclick="selectOption(this,'form','Прямоугольник 3,5×6,5 см')"><img src="foto11.jpg">Прямоуг. 3,5×6,5</div>
-          <div class="option" onclick="selectOption(this,'form','Прямоугольник 2×3 см')"><img src="foto11.jpg">Прямоуг. 2×3</div>
-          <div class="option" onclick="selectOption(this,'form','Овал 3,5×5,5 см')"><img src="foto12.jpg">Овал 3,5×5,5</div>
-          <div class="option" onclick="selectOption(this,'form','Овал 2×2,5 см')"><img src="foto12.jpg">Овал 2×2,5</div>
-          <div class="option" onclick="selectOption(this,'form','Скруглённый треугольник 4,5 см')"><img src="foto14.jpg">Треугольник 4,5</div>
-          <div class="option" onclick="selectOption(this,'form','Герб 5×3,5 см')"><img src="foto15.jpg">Герб 5×3,5</div>
+          <div class="option" onclick="selectOption(this,'form','Круг 4,5 см')"><img src="foto13.png">Круг 4,5</div>
+          <div class="option" onclick="selectOption(this,'form','Круг 2,5 см')"><img src="foto13.png">Круг 2,5</div>
+          <div class="option" onclick="selectOption(this,'form','Квадрат 4×4 см')"><img src="foto10.png">Квадрат 4×4</div>
+          <div class="option" onclick="selectOption(this,'form','Квадрат 2,5×2,5 см')"><img src="foto10.png">Квадрат 2,5</div>
+          <div class="option" onclick="selectOption(this,'form','Прямоугольник 3,5×6,5 см')"><img src="foto11.png">Прямоуг. 3,5×6,5</div>
+          <div class="option" onclick="selectOption(this,'form','Прямоугольник 2×3 см')"><img src="foto11.png">Прямоуг. 2×3</div>
+          <div class="option" onclick="selectOption(this,'form','Овал 3,5×5,5 см')"><img src="foto12.png">Овал 3,5×5,5</div>
+          <div class="option" onclick="selectOption(this,'form','Овал 2×2,5 см')"><img src="foto12.png">Овал 2×2,5</div>
+          <div class="option" onclick="selectOption(this,'form','Скруглённый треугольник 4,5 см')"><img src="foto14.png">Треугольник 4,5</div>
+          <div class="option" onclick="selectOption(this,'form','Герб 5×3,5 см')"><img src="foto15.png">Герб 5×3,5</div>
         </div>
       </div>
       <div class="option-group">
@@ -274,7 +265,6 @@ function hideObves() {
   document.getElementById('obvesDetails').style.display = 'none';
 }
 
-// ---------- ЭКРАН 4 ----------
 function showCheck() {
   const c = document.getElementById('checkContent');
   let html = `<b>Тип:</b> ${order.type}<br>`;
@@ -306,7 +296,6 @@ function translateKey(key) {
   return map[key] || key;
 }
 
-// ---------- Отправка ----------
 function sendOrder() {
   let text = `Заявка Près de Toi%0A%0A`;
   text += `Тип: ${order.type}%0A`;
