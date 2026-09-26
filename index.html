@@ -52,7 +52,7 @@
   <h1>Près de Toi</h1>
   <p class="subtitle">рядом с тобой</p>
 
-  <!-- ЭКРАН 1: Тип изделия -->
+  <!-- ЭКРАН 1 -->
   <div id="screen1" class="screen active">
     <p class="screen-title">Выберите тип изделия</p>
     <button class="btn" onclick="goTo(2, {type: 'Подвеска'})">
@@ -63,19 +63,19 @@
     </button>
   </div>
 
-  <!-- ЭКРАН 2: Формат -->
+  <!-- ЭКРАН 2 -->
   <div id="screen2" class="screen">
     <button class="btn back" onclick="goTo(1)">← Назад</button>
     <p class="screen-title">Выберите формат изделия</p>
     <button class="btn" onclick="goTo(3, {format: 'Вариант 1'})">
-  <img src="foto3.jpg" alt="Вариант 1">Вариант 1
-</button>
-<button class="btn" onclick="goTo(3, {format: 'Вариант 2'})">
-  <img src="foto4.jpg" alt="Вариант 2">Вариант 2
-</button>
+      <img src="foto3.jpg" alt="Вариант 1">Вариант 1
+    </button>
+    <button class="btn" onclick="goTo(3, {format: 'Вариант 2'})">
+      <img src="foto4.jpg" alt="Вариант 2">Вариант 2
+    </button>
   </div>
 
-  <!-- ЭКРАН 3: Сборка -->
+  <!-- ЭКРАН 3 -->
   <div id="screen3" class="screen">
     <button class="btn back" onclick="goTo(2)">← Назад</button>
     <p class="screen-title" id="screen3Title">Сборка</p>
@@ -83,7 +83,7 @@
     <button class="btn primary" onclick="showCheck()">Перепроверить заказ</button>
   </div>
 
-  <!-- ЭКРАН 4: Проверка -->
+  <!-- ЭКРАН 4 -->
   <div id="screen4" class="screen">
     <button class="btn back" onclick="goTo(3)">← Назад</button>
     <p class="screen-title">Перепроверьте заказ</p>
@@ -113,15 +113,16 @@ function selectOption(el, key, value) {
   choices[key] = value;
 }
 
-// ---------- ЭКРАН 3: логика по 4 сценариям ----------
+// ---------- ЭКРАН 3 ----------
 function buildStep3() {
   const c = document.getElementById('buildContent');
   const t = document.getElementById('screen3Title');
   let html = '';
+  choices = {}; // сброс выбора
 
-  // ПОДВЕСКА + МОРДА
-  if (order.type === 'Подвеска' && order.format === 'Морда') {
-    t.textContent = 'Сборка подвески с мордой';
+  // ПОДВЕСКА + ВАРИАНТ 1
+  if (order.type === 'Подвеска' && order.format === 'Вариант 1') {
+    t.textContent = 'Сборка подвески · Вариант 1';
     html = `
       <div class="option-group">
         <label>1. Фото лошади</label>
@@ -142,9 +143,9 @@ function buildStep3() {
     `;
   }
 
-  // ПОДВЕСКА + СМОЛА
-  if (order.type === 'Подвеска' && order.format === 'Смола') {
-    t.textContent = 'Сборка подвески со смолой';
+  // ПОДВЕСКА + ВАРИАНТ 2
+  if (order.type === 'Подвеска' && order.format === 'Вариант 2') {
+    t.textContent = 'Сборка подвески · Вариант 2';
     html = `
       <div class="option-group">
         <label>1. Фото для изделия</label>
@@ -186,9 +187,9 @@ function buildStep3() {
     `;
   }
 
-  // БРЕЛОК + МОРДА
-  if (order.type === 'Брелок' && order.format === 'Морда') {
-    t.textContent = 'Сборка брелока с мордой';
+  // БРЕЛОК + ВАРИАНТ 1
+  if (order.type === 'Брелок' && order.format === 'Вариант 1') {
+    t.textContent = 'Сборка брелока · Вариант 1';
     html = `
       <div class="option-group">
         <label>1. Фото лошади</label>
@@ -197,8 +198,8 @@ function buildStep3() {
       <div class="option-group">
         <label>2. Обвес</label>
         <div class="option-row">
-          <div class="option" onclick="selectOption(this,'obves','Есть')">Есть</div>
-          <div class="option" onclick="selectOption(this,'obves','Нет')">Нет</div>
+          <div class="option" onclick="selectOption(this,'obves','Есть'); showObves()">Есть</div>
+          <div class="option" onclick="selectOption(this,'obves','Нет'); hideObves()">Нет</div>
         </div>
         <div id="obvesDetails" style="display:none; margin-top:12px;">
           <label>Цвет на обвесе</label>
@@ -217,9 +218,9 @@ function buildStep3() {
     `;
   }
 
-  // БРЕЛОК + СМОЛА
-  if (order.type === 'Брелок' && order.format === 'Смола') {
-    t.textContent = 'Сборка брелока из смолы';
+  // БРЕЛОК + ВАРИАНТ 2
+  if (order.type === 'Брелок' && order.format === 'Вариант 2') {
+    t.textContent = 'Сборка брелока · Вариант 2';
     html = `
       <div class="option-group">
         <label>1. Вариант изделия</label>
@@ -264,21 +265,16 @@ function buildStep3() {
   }
 
   c.innerHTML = html;
-
-  // Показ доп. полей для обвеса
-  setTimeout(() => {
-    const obvesOptions = c.querySelectorAll('.option');
-    obvesOptions.forEach(opt => {
-      if (opt.textContent.includes('Есть') && opt.parentElement.parentElement.querySelector('label')?.textContent === '2. Обвес') {
-        opt.addEventListener('click', () => {
-          document.getElementById('obvesDetails').style.display = 'block';
-        });
-      }
-    });
-  }, 100);
 }
 
-// ---------- ЭКРАН 4: Проверка ----------
+function showObves() {
+  document.getElementById('obvesDetails').style.display = 'block';
+}
+function hideObves() {
+  document.getElementById('obvesDetails').style.display = 'none';
+}
+
+// ---------- ЭКРАН 4 ----------
 function showCheck() {
   const c = document.getElementById('checkContent');
   let html = `<b>Тип:</b> ${order.type}<br>`;
