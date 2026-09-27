@@ -27,6 +27,9 @@
   .btn.primary:hover { background: #a0750a; }
   .btn.back { background: transparent; border: none; color: #999; font-size: 14px; margin-bottom: 8px; text-align: left; padding: 8px 0; }
   .btn img { width: 100%; border-radius: 10px; margin-bottom: 8px; display: block; }
+  .price-row { display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 6px; }
+  .price-new { color: #d32f2f; font-weight: 700; font-size: 17px; }
+  .price-old { color: #999; text-decoration: line-through; font-size: 14px; }
   .option-group { margin-bottom: 24px; }
   .option-group label { display: block; font-size: 14px; color: #b8860b; margin-bottom: 8px; font-weight: 500; }
   .option-row { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -56,9 +59,17 @@
     <p class="screen-title">Выберите тип изделия</p>
     <button class="btn" onclick="goTo(2, {type: 'Подвеска'})">
       <img src="foto1.png" alt="Подвеска">Подвеска
+      <div class="price-row">
+        <span class="price-new">15 BYN</span>
+        <span class="price-old">30 BYN</span>
+      </div>
     </button>
     <button class="btn" onclick="goTo(2, {type: 'Брелок'})">
       <img src="foto2.png" alt="Брелок">Брелок
+      <div class="price-row">
+        <span class="price-new">15 BYN</span>
+        <span class="price-old">27 BYN</span>
+      </div>
     </button>
   </div>
 
